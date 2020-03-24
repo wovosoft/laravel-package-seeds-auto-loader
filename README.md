@@ -31,7 +31,7 @@ A Laravel service provider used for automatically register seeds in a package wh
 
         class SeedServiceProvider extends ServiceProvider
         {
-            protected $seeds_path = '/../database/seeds';
+            protected $seeds_path = __DIR__ . '/../../database/seeds';
             
             ...
         }
