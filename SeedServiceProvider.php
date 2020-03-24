@@ -8,10 +8,11 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\ServiceProvider;
 use Symfony\Component\Console\Output\ConsoleOutput;
+use Illuminate\Support\Str;
 
 class SeedServiceProvider extends ServiceProvider
 {
-    protected $seeds_path = '/../database/seeds';
+    protected $seeds_path = __DIR__ . '/../../database/seeds';
 
 
     /**
@@ -42,7 +43,7 @@ class SeedServiceProvider extends ServiceProvider
         $args = Request::server('argv', null);
         if (is_array($args)) {
             $command = implode(' ', $args);
-            if (str_contains($command, $contain_options) && ($exclude_options == null || !str_contains($command, $exclude_options))) {
+            if (Str::contains($command, $contain_options) && ($exclude_options == null || !Str::contains($command, $exclude_options))) {
                 return true;
             }
         }
